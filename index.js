@@ -27,11 +27,12 @@ app.use(express.json());
 app.get("/",(req,res)=>{
     res.send("Base  URL");
 })
-app.get("/user",async(req,res)=>{
-    const users=await UserModel.find();
-    res.send(users);
 
-    
+app.get("/user",async(req,res)=>{
+    // res.send("User  URL");
+    // res.send(users);
+    const users=await UserModel.find();
+    res.send(users);    
 })
 app.post("/signup",(req,res)=>{
     const {name,email,password}=req.body;

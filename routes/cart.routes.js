@@ -13,10 +13,10 @@ cartRouter.get("/",async(req,res)=>{
 
 cartRouter.post("/",async(req,res)=>{
     // const data=req.body;
-    const {img,name,discounted_price,price,pack,category,description}=req.body;
+    const {_id,img,name,discounted_price,price,pack,category,description}=req.body;
      
     const newData=new CartModel({
-        img,name,discounted_price,price,pack,category,description
+        _id,img,name,discounted_price,price,pack,category,description
     })
     await newData.save();
     
