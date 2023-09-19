@@ -18,7 +18,7 @@ cartRouter.post("/",async(req,res)=>{
 
     try {
         const newData=new CartModel({
-            _id,img,name,discounted_price,price,pack,category,description
+            _id,img,name,discounted_price,price,pack,category,description,quantity:1,user_email:localStorage.getItem("userEmail")
         })
         await newData.save();
         
@@ -31,6 +31,26 @@ cartRouter.post("/",async(req,res)=>{
      
     
 });
+cartRouter.put("/:_id",async(req,res)=>{
+    try {
+    const { _id, quantity } = req.body;
+
+    
+    const data = CartModel.findByIdAndUpdate(
+        _id,
+        { quantity},
+        { new: true } 
+      );
+
+    res.send({ success: true, data });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ success: false, error: 'An error occurred while updating the cart.' });
+  }
+});
+     
+    
+
 cartRouter.delete("/:_id",async(req,res)=>{
     const {_id}=req.params
 
