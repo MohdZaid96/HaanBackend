@@ -4,6 +4,17 @@ const ProductModel=require("../models/Product.model");
 
 const productRouter=Router();
 
+productRouter.get("/:_id",async(req,res)=>{  
+    const {_id}=req.params  
+    try {
+      const data = await ProductModel.find({_id})    
+  
+      res.send({data});
+    } catch (err) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 productRouter.get("/",async(req,res)=>{
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 6;
