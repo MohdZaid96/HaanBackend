@@ -7,7 +7,7 @@ const CartModel=require("../models/Cart.model");
 const cartRouter=Router();
 
 cartRouter.get("/",async(req,res)=>{
-    const data=await CartModel.find({user_email:localStorage.getItem("userEmail")});
+    const data=await CartModel.find();
     res.send({msg:"Data sended",data:data});
 });
 
