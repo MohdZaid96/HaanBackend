@@ -18,7 +18,7 @@ cartRouter.post("/",async(req,res)=>{
 
     try {
         const newData=new CartModel({
-            _id,img,name,discounted_price,price,pack,category,description,quantity:1,user_email:localStorage.getItem("userEmail")
+            _id,img,name,discounted_price,price,pack,category,description,quantity:1
         })
         await newData.save();
         
