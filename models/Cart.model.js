@@ -7,7 +7,8 @@ const CartSchema=mongoose.Schema({
     price : {type :Number , required : true},
     pack:{type :Number ,required:true},
     category:{type :String ,required:true},
-    description:{type :String ,required:true}
+    description:{type :String ,required:true},
+    user_email:{type:String,required:true}
 })
 
 const CartModel=mongoose.model('cart',CartSchema);
